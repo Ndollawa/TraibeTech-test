@@ -61,6 +61,12 @@ DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/dbname"
 # Supabase (optional)
 SUPABASE_URL="https://your-project.supabase.co"
 SUPABASE_ANON_KEY="your-supabase-anon-key"
+
+
+SEED_SECRET=
+
+VITE_TINYMCE_API_KEY=
+
 ```
 
 ---
