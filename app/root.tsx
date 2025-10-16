@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import { Link } from "react-router";
 import type { Route } from "./+types/root";
 import "./app.css";
 
@@ -47,10 +48,12 @@ export default function App() {
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
+  let status= 500;
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
+    status = error.status;
     message = error.status === 404 ? "404" : "Error";
     details =
       error.status === 404
@@ -62,14 +65,27 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
+    <main className="h-screen w-full flex flex-col justify-center items-center bg-[#1A2238]">
+      <div className="relative flex flex-col justify-center items-center">
+        <h1 className="text-9xl font-extrabold text-white tracking-widest">
+          {status}
+        </h1>
+        <div className="bg-green-600 absolute text-center font-bold h-6 w-fit  t-10 px-4 text-sm rounded rotate-12">
+          {message}
+        </div>
+      </div>
+      <p className="text-white text-xl px-2 text-center my-10 w-3/6">{details}</p>
+
+      <Link
+        to="/dashboard"
+        className="relative inline-block text-sm font-mediummt-5 text-gray-200 group active:text-green-600 focus:outline-none focus:ring"
+      >
+        <span className="absolute inset-0 transition-transform translate-x-0.5 translate-y-0.5 bg-green-600 group-hover:translate-y-0 group-hover:translate-x-0"></span>
+
+        <span className="relative block px-8 py-3 bg-[#1A2238] border border-current">
+          Go Back
+        </span>
+      </Link>
     </main>
   );
 }
