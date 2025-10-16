@@ -1,4 +1,4 @@
-import { prisma } from "~/utils";
+import { prisma } from "~/utils/prisma-client.server";
 
 
 async function main() {

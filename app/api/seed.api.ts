@@ -1,4 +1,4 @@
-import { prisma } from "~/utils/";
+import { prisma } from "~/utils/prisma-client.server";
 
 export async function runSeed() {
   console.log("🌱 Running seed via web trigger...");
