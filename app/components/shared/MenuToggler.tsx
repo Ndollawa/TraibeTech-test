@@ -15,7 +15,7 @@ interface FuncProp {
 
 export default function MenuToggler({ toggleMenu, user }: FuncProp) {
   return (
-    <div className="flex sticky top-0 right-0 w-full justify-end items-center bg-black text-white h-16">
+    <div className="flex sticky top-0 right-0 w-full justify-end items-center bg-black text-white h-16 z-10000">
    
       <div className="flex items-center justify-end">
         <ul className="flex w-full h-6 justify-between text-lg">
@@ -44,7 +44,7 @@ export default function MenuToggler({ toggleMenu, user }: FuncProp) {
 
             <input type="checkbox" id="userMenu" className="hidden peer" />
 
-            <div className="peer-checked:block hidden absolute right-0 top-12 w-60 bg-white dark:bg-gray-700 rounded-lg shadow-lg z-100">
+            <div className="peer-checked:block hidden absolute right-0 top-12 w-60 bg-white dark:bg-gray-700 rounded-lg shadow-lg z-1100">
               <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
                 <li className="px-3">
                   <button className="flex w-full items-center gap-2 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
