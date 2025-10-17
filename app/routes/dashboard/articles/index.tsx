@@ -100,10 +100,10 @@ export default function ArticleList() {
 
   /* ---- UI ---- */
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div className="grid grid-cols-1 w-full box-border overflow-x-auto shadow-md sm:rounded-lg">
       {/* Search */}
-      <div className="py-4 bg-gray-700 dark:bg-gray-900 flex justify-between items-center px-4">
-        <div className="relative mt-2">
+      <div className="py-4 bg-gray-700 dark:bg-gray-900 w-full box-border flex flex-1 justify-between items-center px-4">
+        <div className="relative mt-2 w-full">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -125,7 +125,7 @@ export default function ArticleList() {
             id="table-search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-200
+            className="block box-border pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-200
                        focus:ring-blue-500 focus:border-blue-500
                        dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                        dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -134,83 +134,87 @@ export default function ArticleList() {
         </div>
         <Link
           to={generatePath("createArticle")}
-          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm"
+          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm text-nowrap"
         >
           + New Article
         </Link>
       </div>
       {/* Table */}
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th className="px-6 py-3">Title</th>
-            <th className="px-6 py-3">Slug</th>
-            <th className="px-6 py-3">Category</th>
-            <th className="px-6 py-3">Created</th>
-            <th className="px-6 py-3 text-right">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filtered.length > 0 ? (
-            filtered.map((article) => (
-              <tr
-                key={article.id}
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
-              >
-                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  {article.title}
-                </td>
-                <td className="px-6 py-4">{article.slug}</td>
-                <td className="px-6 py-4">{article.category?.name || "—"}</td>
-                <td className="px-6 py-4">
-                  {formatDate(new Date(article.createdAt).toLocaleDateString())}
-                </td>
-                <td className="px-6 py-4 text-right flex gap-2 justify-end">
-                  {/* <Link
+      <div className=" box-border relative">
+        <table className="w-full box-border relative text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th className="px-6 py-3">Title</th>
+              <th className="px-6 py-3">Slug</th>
+              <th className="px-6 py-3">Category</th>
+              <th className="px-6 py-3">Created</th>
+              <th className="px-6 py-3 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filtered.length > 0 ? (
+              filtered.map((article) => (
+                <tr
+                  key={article.id}
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
+                >
+                  <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {article.title}
+                  </td>
+                  <td className="px-6 py-4">{article.slug}</td>
+                  <td className="px-6 py-4">{article.category?.name || "—"}</td>
+                  <td className="px-6 py-4">
+                    {formatDate(
+                      new Date(article.createdAt).toLocaleDateString()
+                    )}
+                  </td>
+                  <td className="px-6 py-4 text-right flex gap-2 justify-end">
+                    {/* <Link
                     to={`/dashboard/articles/${article.slug}`}
                     className="text-gray-500 hover:text-green-600"
                     title="Preview"
                   >
                     <Eye className="w-4 h-4" />
                   </Link> */}
-                  <button
-                    onClick={() => openPreview(article)}
-                    className="text-gray-500 hover:text-green-600"
-                    title="Preview"
-                  >
-                    <Eye className="w-4 h-4" />
-                  </button>
-                  <Link
-                    to={generatePath("editArticle", {
-                      slug: article.slug,
-                    })}
-                    className="text-blue-600 hover:text-blue-700"
-                    title="Edit"
-                  >
-                    <Pencil className="w-4 h-4" />
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(article.id, article.title)}
-                    className="text-red-600 hover:text-red-700"
-                    title="Delete"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                    <button
+                      onClick={() => openPreview(article)}
+                      className="text-gray-500 hover:text-green-600"
+                      title="Preview"
+                    >
+                      <Eye className="w-4 h-4" />
+                    </button>
+                    <Link
+                      to={generatePath("editArticle", {
+                        slug: article.slug,
+                      })}
+                      className="text-blue-600 hover:text-blue-700"
+                      title="Edit"
+                    >
+                      <Pencil className="w-4 h-4" />
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(article.id, article.title)}
+                      className="text-red-600 hover:text-red-700"
+                      title="Delete"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan={5}
+                  className="text-center py-8 text-gray-500 dark:text-gray-400"
+                >
+                  No articles found.
                 </td>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td
-                colSpan={5}
-                className="text-center py-8 text-gray-500 dark:text-gray-400"
-              >
-                No articles found.
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+            )}
+          </tbody>
+        </table>
+      </div>
       <ArticlePreviewModal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}

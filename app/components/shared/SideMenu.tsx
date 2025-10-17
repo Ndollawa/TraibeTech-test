@@ -1,24 +1,26 @@
 
 import MenuSearch from './SideMenu/MenuSearch';
 import Menu from './SideMenu/Menu';
-import MenuUserProfile from './SideMenu/MenuUserProfile';
+// import MenuUserProfile from './SideMenu/MenuUserProfile';
 import { generatePath } from '~/constants';
 
 export default function SideMenu() {
   return (
     <>
       <div className="flex flex-col flex-1 justify-between h-screen overflow-y-auto">
-        <div className="p-4">
+        <div className="p-4 w-full">
           {/* <!-- LOGO --> */}
           <a
-            className="flex items-center text-white space-x-4"
+            className="flex items-center text-white space-x-4 w-full"
             href={generatePath("dashboard")}
           >
-            <img
-              className="w-7 h-7 rounded-lg p-1"
-              src={"/favicon.ico"}
-              alt="Logo"
-            />
+            <div className="flex h-16 mx-auto relative">
+              <img
+                src="/assets/images/logo.png"
+                alt="logo"
+                className="rounded-xs w-full relative object-cover m-4 my-2"
+              />
+            </div>
           </a>
 
           {/* <!-- SEARCH BAR --> */}
@@ -30,7 +32,7 @@ export default function SideMenu() {
         </div>
 
         {/* <!-- PROFILE --> */}
-        <MenuUserProfile />
+        {/* <MenuUserProfile /> */}
       </div>
     </>
   );

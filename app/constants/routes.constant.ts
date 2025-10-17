@@ -14,6 +14,10 @@ export const routeConstants = {
     path: "/auth/login",
     name: "Login",
   },
+  logout: {
+    path: "/logout",
+    name: "Logout",
+  },
   register: {
     path: "/auth/register",
     name: "Register",
@@ -64,13 +68,12 @@ export const routeConstants = {
   editArticle: {
     path: "/dashboard/articles/:slug/edit",
     name: "Edit Article",
-
   },
-    // Seeding
-    seed: {
-      path: "/dashboard/admin/seed",
-      name: "Seed Database",
-    },
+  // Seeding
+  seed: {
+    path: "/dashboard/admin/seed",
+    name: "Seed Database",
+  },
 } as const;
 
 export function generatePath(

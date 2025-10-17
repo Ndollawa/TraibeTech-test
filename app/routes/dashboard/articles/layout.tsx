@@ -30,7 +30,7 @@ export default function IndexPage() {
   const { categories } = useLoaderData<typeof loader>();
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
-      <div className="md:col-span-4 bg-gray-100 dark:bg-gray-900 p-6">
+      <div className="md:col-span-4 bg-gray-100 dark:bg-gray-900 p-2 sm:p-6">
         <h1 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-100">
           CMS Article Tree
         </h1>

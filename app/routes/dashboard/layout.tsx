@@ -28,13 +28,13 @@ export default function Layout() {
   const { user } = useLoaderData<typeof loader>();
 
   return (
-    <div className="font-poppins antialiased bg-white dark:bg-gray-800">
+    <div className="box-border font-poppins antialiased bg-white dark:bg-gray-800">
       <div className="flex relative">
         <Nav isToggle={isToggle} />
-        <div className="flex-1">
+        <div className="flex-1 w-full">
           <MenuToggler toggleMenu={toggleMenu} user={user} />
-          <main className=" pb-20 pt-20 h-[calc(100vh-40px)] relative w-full overflow-x-hidden overflow-y-scroll ">
-            <div className="">
+          <main className="grid grid-cols-1 p-5 md:p-10 lg:p-16 h-[calc(100vh-40px)] relative w-full overflow-x-hidden overflow-y-scroll z-0">
+            <div className="box-border mx-auto w-full">
               <Outlet />
             </div>
             {/*<!-- END OF PAGE CONTENT -->*/}

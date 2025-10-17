@@ -27,4 +27,5 @@ export function formatDate(
     return format(new Date("2025-08-10"), pattern);
   }
 }
+
 export const compareDate = (date:Date)=>new Date(date ).getUTCSeconds() >= new Date().getUTCSeconds()

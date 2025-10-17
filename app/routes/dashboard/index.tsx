@@ -41,8 +41,8 @@ export const loader = async () => {
 export default function Index() {
   const { categories } = useLoaderData<typeof loader>();
   return (
-    <div className="p-8">
-      <div className="block space-x-4 space-y-4 md:flex md:justify-between mb-4">
+    <div className="">
+      <div className="space-x-4 space-y-4 flex justify-between mb-4">
         <h1 className="text-2xl font-semibold">Articles</h1>
         <div className="space-x-4">
           <Link
